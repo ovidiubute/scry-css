@@ -10,5 +10,13 @@ describe('LineReader', () => {
         done()
       })
     })
+
+    it('should ignore empty lines', (done) => {
+      LineReader.lines('test/fixtures/empty-lines.less').then((lines) => {
+        expect(lines).to.deep.equal([])
+
+        done()
+      })
+    })
   })
 })
