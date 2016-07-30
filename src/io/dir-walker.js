@@ -8,7 +8,7 @@ function files(dirPath) {
 
   dir.files(path.resolve(dirPath), function(err, files) {
     if (err) {
-      deferred.reject(files)
+      deferred.reject(err)
       return
     }
 

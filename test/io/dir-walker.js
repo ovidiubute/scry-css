@@ -12,5 +12,15 @@ describe('DirWalker', () => {
         done()
       })
     })
+
+    it('should return error given a non-existent directory', (done) => {
+      DirWalker.files('test/fixtures/no-way-this-exists').then((files) => {
+        assert.fail(false, true, 'Should have rejected the promise.')
+      }, (err) => {
+        expect(err).to.be.instanceof(Error)
+
+        done()
+      })
+    })
   })
 })

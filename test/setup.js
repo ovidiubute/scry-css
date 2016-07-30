@@ -1,1 +1,4 @@
-global.expect = require('chai').expect
+const {expect, assert} = require('chai')
+
+global.expect = expect
+global.assert = assert
