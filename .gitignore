@@ -1,3 +1,4 @@
 npm-debug.log
+mocha-report/
 node_modules/
 coverage/

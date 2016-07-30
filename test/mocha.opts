@@ -1,4 +1,5 @@
 --require test/setup.js
---reporter nyan
+--reporter mochawesome
+--reporter-options reportDir=mocha-report,reportName=test-report,reportTitle=TestReport
 --recursive
 --growl
