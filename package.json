@@ -6,7 +6,9 @@
   "scripts": {
     "test": "mocha test",
     "test:watch": "npm run test -- -w",
-    "test:coverage": "istanbul cover node_modules/.bin/_mocha -- -- test"
+    "test:report": "mocha test --recursive --reporter mochawesome --reporter-options reportDir=mocha-report,reportName=test-report,reportTitle=TestReport",
+    "test:coverage": "istanbul cover node_modules/.bin/_mocha -- -- test",
+    "lint": "eslint src/**/*.js"
   },
   "author": "Ovidiu Bute <ovidiu.bute@gmail.com>",
   "license": "MIT",
@@ -23,6 +25,9 @@
   ],
   "devDependencies": {
     "chai": "3.5.0",
+    "eslint": "3.2.0",
+    "eslint-config-airbnb-base": "5.0.1",
+    "eslint-plugin-import": "1.12.0",
     "istanbul": "0.4.4",
     "mocha": "2.5.3",
     "mochawesome": "1.4.0"
