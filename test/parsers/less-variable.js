@@ -32,6 +32,12 @@ describe('LESS Variable parser', function () {
       })
     })
 
+    it('should parse variable with a text value', function () {
+      expect(lvp.parse('@widget-align: normal;')).to.deep.equal({
+        variable: 'widget-align', value: 'normal'
+      })
+    })
+
     it('should not parse a non variable declaration line', function () {
       expect(lvp.parse('.icon-a {')).to.equal(null)
     })
