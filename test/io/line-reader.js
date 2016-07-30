@@ -1,5 +1,5 @@
-const LineReader = require('../src/line-reader')
-const fixture = require('./fixtures/only-variables')
+const LineReader = require('../../src/io/line-reader')
+const fixture = require('../fixtures/only-variables')
 
 describe('LineReader', () => {
   describe('#lines', () => {
