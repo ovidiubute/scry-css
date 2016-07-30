@@ -1,0 +1,27 @@
+{
+  "name": "howaboutless",
+  "version": "0.0.1",
+  "description": "Helper lib for auto-discovery of LESS variables and mixins",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha test",
+    "develop": "mocha test -w",
+    "coverage": "istanbul cover node_modules/.bin/_mocha -- -- test"
+  },
+  "author": "Ovidiu Bute <ovidiu.bute@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "lodash": "4.14.1"
+  },
+  "keywords": [
+    "less",
+    "helper",
+    "parser",
+    "mixin"
+  ],
+  "devDependencies": {
+    "chai": "3.5.0",
+    "istanbul": "0.4.4",
+    "mocha": "2.5.3"
+  }
+}
