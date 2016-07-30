@@ -12,7 +12,7 @@
   "license": "MIT",
   "dependencies": {
     "lodash": "4.14.1",
-    "node-dir": "^0.1.15",
+    "node-dir": "0.1.15",
     "promised-io": "0.3.5"
   },
   "keywords": [
@@ -25,6 +25,6 @@
     "chai": "3.5.0",
     "istanbul": "0.4.4",
     "mocha": "2.5.3",
-    "mochawesome": "^1.4.0"
+    "mochawesome": "1.4.0"
   }
 }
