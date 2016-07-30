@@ -1,7 +1,7 @@
 const readline = require('readline')
 const fs = require('fs')
 const path = require('path')
-const Deferred = require("promised-io/promise").Deferred
+const Deferred = require('promised-io/promise').Deferred
 const _ = require('lodash')
 
 function lines(filePath) {
