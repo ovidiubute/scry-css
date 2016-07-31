@@ -7,6 +7,10 @@ module.exports = {
     {
       variable: 'max-width',
       value: '@some-global-width'
+    },
+    {
+      variable: 'border',
+      value: '@border-length @border-type @border-color'
     }
   ]
 }
