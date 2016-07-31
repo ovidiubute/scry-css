@@ -4,7 +4,7 @@ describe('#receiveInput', () => {
   it('should receive a list of directories and return all files matching extension', (done) => {
     const dirs = [
       'test/fixtures/walk-directory',
-      'test/fixtures/pipeline',
+      'test/fixtures/candidates/css-properties',
     ]
 
     receiveInput(dirs, {
