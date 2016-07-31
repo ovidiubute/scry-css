@@ -8,22 +8,22 @@ function files(dirPath, fileExtension) {
     throw new Error('fileExtension is mandatory!')
   }
 
-  let deferred = new Deferred()
+  const deferred = new Deferred()
 
-  dir.files(path.resolve(dirPath), (err, files) => {
+  dir.files(path.resolve(dirPath), (err, fileList) => {
     if (err) {
       deferred.reject(err)
       return
     }
 
-    deferred.resolve(files.filter((file) => {
-      return !_.startsWith(file, '.') && _.endsWith(file, fileExtension)
-    }))
+    deferred.resolve(fileList.filter((file) => (
+      !_.startsWith(file, '.') && _.endsWith(file, fileExtension)))
+    )
   })
 
   return deferred.promise
 }
 
 module.exports = {
-  files
+  files,
 }

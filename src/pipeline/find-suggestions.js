@@ -1,3 +1,1 @@
-module.exports = (propDefsByFile, intelliData, intelliConfig) => {
-  return arguments
-}
+module.exports = (/* propDefsByFile, intelliData, intelliConfig */) => arguments

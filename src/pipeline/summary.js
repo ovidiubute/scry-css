@@ -1,3 +1,1 @@
-module.exports = () => {
-  return arguments
-}
+module.exports = () => arguments

@@ -2,14 +2,12 @@ const LineReader = require('../io/line-reader')
 const Promise = require('promised-io/promise')
 
 module.exports = (inputFilePaths) => {
-  let result = { files: {} }
-  let deferred = new Promise.Deferred()
+  const result = { files: {} }
+  const deferred = new Promise.Deferred()
 
-  let promises = inputFilePaths.map((inputFilePath) => {
-    return LineReader.lines(inputFilePath)
-  })
+  const promises = inputFilePaths.map((inputFilePath) => (LineReader.lines(inputFilePath)))
   Promise.all(promises).then((results) => {
-    inputFilePaths.map((inputFilePath, index) => {
+    inputFilePaths.forEach((inputFilePath, index) => {
       result.files[inputFilePath] = results[index]
     })
     deferred.resolve(result)
