@@ -12,8 +12,7 @@ function lines(filePath) {
 
   let data = []
   lineReader.on('line', (line) => {
-    const trimmed = line.trim()
-    data.push(trimmed)
+    data.push(line.trim())
   })
 
   lineReader.on('close', () => {
