@@ -9,4 +9,8 @@ describe('#extract', () => {
       done()
     })
   })
+
+  it('should throw error given unsupported configuration', () => {
+    expect(extract.bind(null, fixture.input, {stack: 'Stylus'})).to.throw(Error)
+  })
 })
