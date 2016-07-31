@@ -31,5 +31,8 @@
     "istanbul": "0.4.4",
     "mocha": "2.5.3",
     "mochawesome": "1.4.0"
+  },
+  "engines" : {
+    "npm" : "~6.0.0"
   }
 }
