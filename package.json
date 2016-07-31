@@ -1,7 +1,7 @@
 {
-  "name": "howaboutless",
+  "name": "scryss",
   "version": "0.0.1",
-  "description": "Helper lib for auto-discovery of LESS variables and mixins",
+  "description": "Suggestion engine for discovering LESS/SASS variables and mixins",
   "main": "index.js",
   "scripts": {
     "test": "mocha test",
@@ -18,9 +18,11 @@
   },
   "keywords": [
     "less",
+    "sass",
+    "tools",
     "helper",
-    "parser",
-    "mixin"
+    "variables",
+    "mixins"
   ],
   "devDependencies": {
     "chai": "3.5.0",
