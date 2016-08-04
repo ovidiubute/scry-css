@@ -1,7 +1,7 @@
 const _ = require('lodash')
 const Promise = require('promised-io/promise')
 const LessVariableParser = require('../../parsers/less-variable')
-const {LineReader} = require('../../io')
+const { LineReader } = require('../../io')
 
 module.exports = (filesByDirectory, intelliConfig) => {
   if (intelliConfig.stack !== 'LESS') {
@@ -17,16 +17,14 @@ module.exports = (filesByDirectory, intelliConfig) => {
     return result
   }, {})
   Promise.allKeys(promises).then((linesByFile) => {
-    const resolved = _.reduce(linesByFile, (result, fileLines, filePath) => {
+    deferred.resolve(_.reduce(linesByFile, (result, fileLines, filePath) => {
       const lessVariables = fileLines
         .map((fileLine) => LessVariableParser.parse(fileLine))
         .filter((fileLine) => !_.isEmpty(fileLine))
 
       result[filePath] = lessVariables
       return result
-    }, {})
-
-    deferred.resolve(resolved)
+    }, {}))
   })
 
   return deferred.promise
