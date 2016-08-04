@@ -1,5 +1,6 @@
 const readline = require('readline')
 const fs = require('fs')
+const _ = require('lodash')
 const path = require('path')
 const Deferred = require('promised-io/promise').Deferred
 
@@ -10,8 +11,14 @@ function lines(filePath) {
   })
 
   const data = []
+  let lineNumber = 1
   lineReader.on('line', (line) => {
-    data.push(line.trim())
+    const value = line.trim()
+    data.push({
+      string: value,
+      isEmpty: _.isEmpty(value),
+      lineNumber: lineNumber++,
+    })
   })
 
   lineReader.on('close', () => {
