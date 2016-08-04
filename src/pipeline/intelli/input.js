@@ -1,11 +1,11 @@
-const DirWalker = require('../../io/dir-walker')
+const { files } = require('../../io/dir-walker')
 const Promise = require('promised-io/promise')
 
 module.exports = (dirPaths, intelliConfig) => {
   const deferred = new Promise.Deferred()
 
   let filesByDirectory = {}
-  Promise.all(dirPaths.map((dirPath) => DirWalker.files(dirPath, intelliConfig.fileExtension))).then((results) => {
+  Promise.all(dirPaths.map((dirPath) => files(dirPath, intelliConfig.fileExtension))).then((results) => {
     results.map((fileList, index) => {
       filesByDirectory[dirPaths[index]] = fileList
     })

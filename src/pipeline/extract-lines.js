@@ -1,4 +1,4 @@
-const LineReader = require('../io/line-reader')
+const { LineReader } = require('../io')
 const Promise = require('promised-io/promise')
 
 module.exports = (inputFilePaths) => {
