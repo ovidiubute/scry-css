@@ -3,7 +3,7 @@ const fuzzy = require('fuzzy')
 
 function match(property, candidates, fieldName) {
   const fuzzyResults = fuzzy.filter(property, candidates, {
-    extract: (el) => el[fieldName]
+    extract: (el) => el[fieldName],
   })
 
   return _

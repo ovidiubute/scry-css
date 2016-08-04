@@ -5,7 +5,7 @@ function parse(line) {
   return all ? {
     property,
     value,
-    lineNumber: line.lineNumber
+    lineNumber: line.lineNumber,
   } : null
 }
 

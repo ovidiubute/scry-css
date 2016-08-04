@@ -11,7 +11,7 @@ function parse(line) {
   return {
     variable,
     value,
-    lineNumber: line.lineNumber
+    lineNumber: line.lineNumber,
   }
 }
 
