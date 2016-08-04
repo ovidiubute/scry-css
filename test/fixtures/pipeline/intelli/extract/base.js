@@ -15,11 +15,18 @@ module.exports = {
     [absolutePath1]: [
       {
         "variable": "global-white-space",
-        "value": "nowrap"
+        "value": "nowrap",
+        "lineNumber": 8,
       },
       {
         "variable": "global-font-family",
-        "value": "Helvetica"
+        "value": "Helvetica",
+        "lineNumber": 10,
+      },
+      {
+        "variable": "global-background",
+        "value": "#fff",
+        "lineNumber": 12,
       }
     ],
     [absolutePath2]: []
