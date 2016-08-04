@@ -1,6 +1,7 @@
 const Promise = require('promised-io/promise')
 const _ = require('lodash')
 const path = require('path')
+const process = require('process')
 const { match } = require('../suggestions/variables')
 
 module.exports = (options) => {
@@ -8,8 +9,11 @@ module.exports = (options) => {
   const deferred = new Promise.Deferred()
 
   if (config.stack !== 'LESS') {
-    deferred.reject(new Error('Unsupported stack in configuration!'))
-    return null
+    process.nextTick(() => {
+      deferred.reject(new Error('Unsupported stack in configuration!'))
+    })
+
+    return deferred.promise
   }
 
   deferred.resolve({
