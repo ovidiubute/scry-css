@@ -1,7 +1,6 @@
 const Promise = require('promised-io/promise')
 const _ = require('lodash')
 const path = require('path')
-const process = require('process')
 const { match } = require('../suggestions/variables')
 
 module.exports = (options) => {
