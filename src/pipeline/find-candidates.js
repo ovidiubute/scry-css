@@ -9,15 +9,12 @@ module.exports = (linesByFile) => (
       filePath,
       propertyDefinitions:
         lines
-          // Small trick so we don't lose line numbers in the next map
-          // Also note we're counting line numbers starting from 1
-          .map((line, lineNumber) => [lineNumber + 1, CssPropertyParser.parse(line)])
+          .map((line, lineNumber) => CssPropertyParser.parse({
+            string: line,
+            lineNumber: lineNumber + 1,
+          }))
           // Remove lines that could not be parsed
-          .filter((propertyDefinition) => !_.isEmpty(_.last(propertyDefinition)))
-          // Restore line numbers
-          .map((propertyDefinition) => Object.assign(_.last(propertyDefinition), {
-            lineNumber: _.head(propertyDefinition),
-          })),
+          .filter((propertyDefinition) => !_.isEmpty(propertyDefinition)),
     }))
     .map((propertyDefinitionsByFile) => ({
       filePath: propertyDefinitionsByFile.filePath,
