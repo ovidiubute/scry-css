@@ -4,9 +4,6 @@ const { parse } = require('../../parsers/less-variable')
 const { LineReader } = require('../../io')
 
 module.exports = (filesByDirectory, intelliConfig) => {
-  if (intelliConfig.stack !== 'LESS') {
-    throw new Error('Unsupported stack, only LESS is supported!')
-  }
   const deferred = new Promise.Deferred()
 
   const promises = _.reduce(filesByDirectory, (result, filePaths) => {
