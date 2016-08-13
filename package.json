@@ -6,7 +6,7 @@
     "test": "mocha test",
     "test:watch": "npm run test -- -w",
     "test:coverage": "istanbul cover node_modules/.bin/_mocha -- -- test",
-    "codecov": "npm run test:coverage && node_modules/.bin/codecov",
+    "test:codecov": "npm run test:coverage && node_modules/.bin/codecov",
     "lint": "eslint src/**/*.js"
   },
   "bin": {
