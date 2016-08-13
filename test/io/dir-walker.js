@@ -7,7 +7,7 @@ describe('DirWalker', () => {
       DirWalker.files('test/fixtures/walk-directory', '.less').then((files) => {
         expect(files.length).to.equal(fixture.files.length)
         for (let i = 0; i < files.length; i++) {
-          expect(files[i]).to.have.string(fixture.files[i])
+          expect(files[i]).to.have.string('.less')
         }
 
         done()
