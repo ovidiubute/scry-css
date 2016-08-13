@@ -5,7 +5,7 @@ module.exports = {
     candidatesByFile: require('../../find-candidates/base').output,
     intelliByFile: require('../../intelli/extract/base').output,
     config: {
-      stack: 'LESS',
+      stack: 'less',
       fileExtension: '.less'
     }
   },
@@ -19,7 +19,7 @@ module.exports = {
             "value": "white",
             "suggestions": [
               {
-                "dirPath": path.resolve("test/fixtures/pipeline/intelli/extract/has-variables.less"),
+                "filePath": path.resolve("test/fixtures/pipeline/intelli/extract/has-variables.less"),
                 "suggestions": [
                   {
                     "variable": "global-background",
@@ -29,7 +29,7 @@ module.exports = {
                 ]
               },
               {
-                "dirPath": path.resolve("test/fixtures/pipeline/intelli/extract/no-variables.less"),
+                "filePath": path.resolve("test/fixtures/pipeline/intelli/extract/no-variables.less"),
                 "suggestions": []
               }
             ]
@@ -40,11 +40,11 @@ module.exports = {
             "value": "#fff",
             "suggestions": [
               {
-                "dirPath": path.resolve("test/fixtures/pipeline/intelli/extract/has-variables.less"),
+                "filePath": path.resolve("test/fixtures/pipeline/intelli/extract/has-variables.less"),
                 "suggestions": []
               },
               {
-                "dirPath": path.resolve("test/fixtures/pipeline/intelli/extract/no-variables.less"),
+                "filePath": path.resolve("test/fixtures/pipeline/intelli/extract/no-variables.less"),
                 "suggestions": []
               }
             ]
@@ -55,11 +55,11 @@ module.exports = {
             "value": "#ddd",
             "suggestions": [
               {
-                "dirPath": path.resolve("test/fixtures/pipeline/intelli/extract/has-variables.less"),
+                "filePath": path.resolve("test/fixtures/pipeline/intelli/extract/has-variables.less"),
                 "suggestions": []
               },
               {
-                "dirPath": path.resolve("test/fixtures/pipeline/intelli/extract/no-variables.less"),
+                "filePath": path.resolve("test/fixtures/pipeline/intelli/extract/no-variables.less"),
                 "suggestions": []
               }
             ]
