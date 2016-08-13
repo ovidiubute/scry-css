@@ -1,5 +1,5 @@
 const dir = require('node-dir')
-const Deferred = require('promised-io/promise').Deferred
+const Promise = require('promised-io/promise')
 const path = require('path')
 const _ = require('lodash')
 
@@ -8,7 +8,7 @@ function files(dirPath, fileExtension) {
     throw new Error('fileExtension is mandatory!')
   }
 
-  const deferred = new Deferred()
+  const deferred = new Promise.Deferred()
 
   dir.files(path.resolve(dirPath), (err, fileList) => {
     if (err) {
@@ -16,8 +16,8 @@ function files(dirPath, fileExtension) {
       return
     }
 
-    deferred.resolve(fileList.filter((file) => (
-      !_.startsWith(file, '.') && _.endsWith(file, fileExtension)))
+    deferred.resolve(
+      fileList.filter((file) => !_.startsWith(file, '.') && _.endsWith(file, fileExtension))
     )
   })
 
