@@ -3,6 +3,7 @@ module.exports = {
   "rules": {
     "semi": [2, "never"],
     "indent": ["error", 2],
-    "max-len": ["error", 100]
+    "max-len": ["error", 100],
+    "arrow-body-style": ["error", "as-needed", { requireReturnForObjectLiteral: true }]
   }
 }
