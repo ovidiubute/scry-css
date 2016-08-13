@@ -20,7 +20,7 @@ module.exports = (linesByFile) => {
         filePath: propertyDefinitionsByFile.filePath,
         propertyDefinitions: CssPropertyCandidates.filter(
           propertyDefinitionsByFile.propertyDefinitions
-        )
+        ),
       }
     })
     .value()

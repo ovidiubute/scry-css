@@ -1,4 +1,6 @@
+const { jsonReporter, consoleReporter } = require('../reporters')
+
 module.exports = (type, results) => {
-  const reporter = require(`../reporters/${type}-reporter`)
+  const reporter = type === 'json' ? jsonReporter : consoleReporter
   return reporter(results)
 }

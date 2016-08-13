@@ -21,14 +21,13 @@ function run(reporterType, techType, dirPath, ...filePaths) {
     ]),
     candidatesByFile: Promise.seq([
       extractLines.bind(null, filePaths),
-      ({files: linesByFile}) => findCandidates(linesByFile),
-    ])
+      ({ files: linesByFile }) => findCandidates(linesByFile),
+    ]),
   }).then((data) => {
-    const results = findSuggestions(_.extend(data, { config: runnerConfig }))
-    return summary(reporterType, results)
+    return summary(reporterType, findSuggestions(_.extend(data, { config: runnerConfig })))
   })
 }
 
 module.exports = {
-  run
+  run,
 }

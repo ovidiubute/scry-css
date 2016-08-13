@@ -13,6 +13,6 @@ if (!program.args.length) {
   program.help()
 } else {
   PipelineRunner.run(program.reporter || 'console', ...program.args).then((summary) => {
-    console.info(summary)
+    console.info(summary) // eslint-disable-line no-console
   })
 }
