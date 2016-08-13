@@ -23,9 +23,12 @@ function run(reporterType, techType, dirPath, ...filePaths) {
       extractLines.bind(null, filePaths),
       ({ files: linesByFile }) => findCandidates(linesByFile),
     ]),
-  }).then((data) => {
-    return summary(reporterType, findSuggestions(_.extend(data, { config: runnerConfig })))
-  })
+  }).then((data) => summary(
+    reporterType,
+    findSuggestions(_.extend(data, {
+      config: runnerConfig,
+    }))
+  ))
 }
 
 module.exports = {
