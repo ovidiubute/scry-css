@@ -17,7 +17,7 @@ function files(dirPath, fileExtension) {
     }
 
     deferred.resolve(
-      fileList.filter((file) => !_.startsWith(file, '.') && _.endsWith(file, fileExtension))
+      fileList.filter(file => !_.startsWith(file, '.') && _.endsWith(file, fileExtension))
     )
   })
 
