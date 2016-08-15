@@ -9,13 +9,17 @@ module.exports = (results) => {
     throw new Error('Cannot format data!')
   }
 
-  resultCount = _.reduce(results.suggestionData, (totalCount, suggestionsByFile) => {
-    return totalCount + _.reduce(suggestionsByFile.propertyDefinitions, (localCount, propertyDef) => {
-      return localCount + propertyDef.suggestions.filter(({ suggestions }) => !_.isEmpty(suggestions)).length
-    }, 0)
-  }, 0)
+  const resultCount = _.reduce(results.suggestionData, (totalCount, { propertyDefinitions }) => (
+    totalCount + _.reduce(propertyDefinitions, (localCount, { suggestions }) => (
+      localCount + suggestions.filter(({ suggestions: localSuggestions }) => (
+        !_.isEmpty(localSuggestions)
+      )).length
+    ), 0)
+  ), 0)
 
   if (resultCount === 0) {
     return noSuggestions()
   }
+
+  return 'not implemented'
 }
