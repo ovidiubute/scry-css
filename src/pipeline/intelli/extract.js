@@ -1,17 +1,17 @@
 const _ = require('lodash')
 const Promise = require('promised-io/promise')
 const { parse } = require('../../parsers/less-variable')
-const { LineReader } = require('../../io')
+const { lines } = require('../../io').LineReader
 
 module.exports = (filesByDirectory, intelliConfig) => {
   const deferred = new Promise.Deferred()
 
   const promises = _.reduce(filesByDirectory, (result, filePaths) => {
-    _.forEach(filePaths, (filePath) => {
-      result[filePath] = LineReader.lines(filePath)
-    })
+    return _.assign(result, _.reduce(filePaths, (linesByFilePath, filePath) => {
+      linesByFilePath[filePath] = lines(filePath)
 
-    return result
+      return linesByFilePath
+    }, {}))
   }, {})
   Promise.allKeys(promises).then((linesByFile) => {
     deferred.resolve(_.reduce(linesByFile, (result, fileLines, filePath) => {
