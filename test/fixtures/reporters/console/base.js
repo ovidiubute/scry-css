@@ -61,5 +61,5 @@ module.exports = {
       }
     ]
   },
-  output: {}
+  output: 'not implemented'
 }
