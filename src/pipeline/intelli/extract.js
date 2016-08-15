@@ -15,11 +15,12 @@ module.exports = (filesByDirectory, intelliConfig) => {
   }, {})
   Promise.allKeys(promises).then((linesByFile) => {
     deferred.resolve(_.reduce(linesByFile, (result, fileLines, filePath) => {
-      const lessVariables = fileLines
+      result[filePath] = _
+        .chain(fileLines)
         .map((fileLine) => parse(fileLine))
         .filter((fileLine) => !_.isEmpty(fileLine))
+        .value()
 
-      result[filePath] = lessVariables
       return result
     }, {}))
   })
