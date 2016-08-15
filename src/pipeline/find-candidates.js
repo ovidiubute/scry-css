@@ -2,8 +2,8 @@ const CssPropertyParser = require('../parsers/css-property')
 const CssPropertyCandidates = require('../candidates/css-properties')
 const _ = require('lodash')
 
-module.exports = (linesByFile) => {
-  return _
+module.exports = (linesByFile) => (
+  _
     .chain(linesByFile)
     .flatMap((lines, filePath) => {
       return {
@@ -24,4 +24,4 @@ module.exports = (linesByFile) => {
       }
     })
     .value()
-}
+)

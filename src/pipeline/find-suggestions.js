@@ -8,8 +8,8 @@ module.exports = (options) => {
   return {
     suggestionData: candidatesByFile.map(({ filePath, propertyDefinitions }) => {
       return {
-        propertyDefinitions: propertyDefinitions.map((propDef) => {
-          return _.extend(propDef, {
+        propertyDefinitions: propertyDefinitions.map((propDef) => (
+          _.extend(propDef, {
             suggestions: _.map(intelliByFile, (variables, fPath) => {
               return {
                 filePath: fPath,
@@ -17,7 +17,7 @@ module.exports = (options) => {
               }
             }),
           })
-        }),
+        )),
         filePath: path.resolve(filePath),
       }
     }),
