@@ -4,7 +4,7 @@ const program = require('commander')
 const PipelineRunner = require('../pipeline/runner')
 
 program
-  .version('scry 0.1.0')
+  .version('scry-css 0.2.0')
   .usage('[options] <type> <dir> <file...>')
   .option('-r --reporter [reporter]', 'Reporter', /^(console|json)$/i)
   .parse(process.argv)
