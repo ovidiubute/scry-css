@@ -14,7 +14,7 @@
     "lint": "eslint src/**/*.js"
   },
   "bin": {
-    "scryss": "src/bin/scry.js"
+    "scryss": "src/bin/scryss.js"
   },
   "pre-commit": [
     "lint",
