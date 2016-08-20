@@ -3,7 +3,8 @@ const fixture = require('../../fixtures/reporters/console/base')
 
 describe('Console Reporter', () => {
   it('should return formatted description of results', () => {
-    expect(consoleReporter(fixture.input)).to.deep.equal(fixture.output)
+    const actual = consoleReporter(fixture.input)
+    expect(actual).to.deep.equal(fixture.output)
   })
 
   it('should throw error due to undefined data', () => {

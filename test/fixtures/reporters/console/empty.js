@@ -1,4 +1,5 @@
 const path = require('path')
+const colour = require('colour')
 
 module.exports = {
   input: {
@@ -55,5 +56,5 @@ module.exports = {
       }
     ]
   },
-  output: 'Sorry, no suggestions available.'
+  output: 'Sorry, no suggestions available.'.italic.grey
 }

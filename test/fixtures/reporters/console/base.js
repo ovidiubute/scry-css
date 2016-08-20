@@ -1,5 +1,6 @@
 const path = require('path')
 const os = require('os')
+const colour = require('colour')
 
 module.exports = {
   input: {
@@ -63,13 +64,13 @@ module.exports = {
     ]
   },
   output: [
-    '--> /test/fixtures/typical-stylesheet.less',
-    '    Line #3 : [background: white;]',
-    `    ==> ${path.resolve('test/fixtures/pipeline/intelli/extract/has-variables.less')}`,
-    '        Line #12 : @global-background: #fff',
-    `    ==> ${path.resolve('test/fixtures/pipeline/intelli/extract/no-variables.less')}`,
-    '        No suggestions!',
-    '    Line #4 : [color: #fff;] : No suggestions!',
-    '    Line #8 : [color: #ddd;] : No suggestions!'
+    '--> ' + '/test/fixtures/typical-stylesheet.less'.underline,
+    '    ' + 'background'.blue + ': '.bold + 'white'.white + '; '.bold + '(line 3)'.grey,
+    `    --> ${path.resolve('test/fixtures/pipeline/intelli/extract/has-variables.less')}`.bold,
+    '        ' + '@global-background'.red + ': '.bold + '#fff'.yellow + '; '.bold + '(line 12)'.bold,
+    '    ' + 'color'.blue + ': '.bold + '#fff'.white + '; '.bold + '(line 4)'.grey,
+    '    ' + 'Sorry, no suggestions available.'.italic.grey,
+    '    ' + 'color'.blue + ': '.bold + '#ddd'.white + '; '.bold + '(line 8)'.grey,
+    '    ' + 'Sorry, no suggestions available.'.italic.grey,
   ].join(os.EOL)
 }

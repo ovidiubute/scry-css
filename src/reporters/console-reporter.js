@@ -1,69 +1,51 @@
 const _ = require('lodash')
 const os = require('os')
+const colour = require('colour') // eslint-disable-line no-unused-vars
 
-function noSuggestions() {
-  return 'Sorry, no suggestions available.'
-}
-
-function countSuggestions(results) {
-  return _.reduce(results.suggestionData, (totalCount, { propertyDefinitions }) => (
-    totalCount + _.reduce(propertyDefinitions, (localCount, { suggestions }) => (
-      localCount + suggestions.filter(({ suggestions: localSuggestions }) => (
-        !_.isEmpty(localSuggestions)
-      )).length
-    ), 0)
-  ), 0)
-}
+const reporterUtils = require('./console-reporter-utils')
 
 module.exports = (results) => {
   if (_.isEmpty(results) || !_.isArray(results.suggestionData)) {
     throw new Error('Cannot format data!')
   }
 
-  const resultCount = countSuggestions(results)
+  const resultCount = reporterUtils.countSuggestions(results)
 
-  if (resultCount === 0) {
-    return noSuggestions()
+  if (!resultCount) {
+    return reporterUtils.formatNoSuggestions()
   }
 
-  return results.suggestionData.reduce((output, resultsByFile) => (
-    _.concat(
-      output,
-      resultsByFile.propertyDefinitions.map((propDef) => {
-        // Count suggestions in case we can print a single line
-        const suggestionCount = propDef.suggestions.reduce((count, { suggestions }) => (
-          count + suggestions.length
-        ), 0)
+  return results.suggestionData.reduce((output, resultsByFile) => {
+    if (!resultsByFile.propertyDefinitions.length) {
+      output.push(`--> ${resultsByFile.filePath.underline}`)
+      output.push(reporterUtils.formatNoSuggestions())
 
-        if (!suggestionCount) {
-          return `    Line #${propDef.lineNumber} : ` +
-            `[${propDef.property}: ${propDef.value};]` +
-            ' : No suggestions!'
-        }
+      return output
+    }
 
-        return _.concat(
-          `--> ${resultsByFile.filePath}`,
-          `    Line #${propDef.lineNumber} : [${propDef.property}: ${propDef.value};]`,
-          propDef.suggestions.map((suggestion) => {
-            const realSuggestions = suggestion.suggestions.map((suggestionDef) => (
-              `        Line #${suggestionDef.lineNumber} : ` +
-                `@${suggestionDef.variable}: ${suggestionDef.value}`
-            )).join(os.EOL)
+    const formatted = resultsByFile.propertyDefinitions.map((propDef) => {
+      // Count suggestions in case we can print a single line
+      const suggestionCount = reporterUtils.countCssPropertySuggestions(propDef)
 
-            if (realSuggestions.length) {
-              return _.concat(
-                `    ==> ${suggestion.filePath}`,
-                realSuggestions
-              ).join(os.EOL)
-            }
+      // No suggestions for this CSS property
+      if (!suggestionCount) {
+        return [
+          reporterUtils.formatCssProperty(propDef),
+          `    ${reporterUtils.formatNoSuggestions()}`,
+        ].join(os.EOL)
+      }
 
-            return _.concat(
-              `    ==> ${suggestion.filePath}`,
-              '        No suggestions!'
-            ).join(os.EOL)
-          })
-        ).join(os.EOL)
-      })
-    )
-  ), []).join(os.EOL)
+      return _.concat(
+        reporterUtils.formatCssProperty(propDef),
+        propDef.suggestions
+          .filter(({ suggestions }) => suggestions.length > 0)
+          .map(reporterUtils.formatSuggestionDefinition)
+      ).join(os.EOL)
+    }).join(os.EOL)
+
+    output.push(`--> ${resultsByFile.filePath.underline}`)
+    output.push(formatted)
+
+    return output
+  }, []).join(os.EOL)
 }
