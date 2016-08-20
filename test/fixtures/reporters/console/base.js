@@ -1,4 +1,5 @@
 const path = require('path')
+const os = require('os')
 
 module.exports = {
   input: {
@@ -61,5 +62,14 @@ module.exports = {
       }
     ]
   },
-  output: 'not implemented'
+  output: [
+    '--> /test/fixtures/typical-stylesheet.less',
+    '    Line #3 : [background: white;]',
+    `    ==> ${path.resolve('test/fixtures/pipeline/intelli/extract/has-variables.less')}`,
+    '        Line #12 : @global-background: #fff',
+    `    ==> ${path.resolve('test/fixtures/pipeline/intelli/extract/no-variables.less')}`,
+    '        No suggestions!',
+    '    Line #4 : [color: #fff;] : No suggestions!',
+    '    Line #8 : [color: #ddd;] : No suggestions!'
+  ].join(os.EOL)
 }
