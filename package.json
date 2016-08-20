@@ -1,10 +1,10 @@
 {
-  "name": "scryss",
+  "name": "scry-css",
   "version": "0.2.0",
-  "description": "Suggestion engine for LESS/SASS variables and mixins",
+  "description": "Suggestion engine for CSS variables and mixins",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ovidiubute/scryss.git"
+    "url": "https://github.com/ovidiubute/scry-css.git"
   },
   "scripts": {
     "test": "mocha test",
