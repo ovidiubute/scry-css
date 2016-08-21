@@ -4,9 +4,12 @@ const program = require('commander')
 const PipelineRunner = require('../pipeline/runner')
 
 program
-  .version('scry-css 0.2.0')
+  .version('scry-css 0.2.1')
   .usage('[options] <type> <dir> <file...>')
-  .option('-r --reporter [reporter]', 'Reporter', /^(console|json)$/i)
+  .option(
+    '-r --reporter [reporter]',
+    'reporter (json/console), defaults to console', /^(console|json)$/i
+  )
   .parse(process.argv)
 
 if (!program.args.length) {
