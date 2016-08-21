@@ -1,16 +1,9 @@
-const _ = require('lodash')
-const fuzzy = require('fuzzy')
+const { filter } = require('fuzzaldrin')
 
 function match(property, candidates, fieldName) {
-  const fuzzyResults = fuzzy.filter(property, candidates, {
-    extract: el => el[fieldName],
+  return filter(candidates, property, {
+    key: fieldName,
   })
-
-  return _
-    .chain(fuzzyResults)
-    .orderBy(['score', 'string'], ['desc', 'asc'])
-    .map(el => candidates.find(c => el.string === c[fieldName]))
-    .value()
 }
 
 module.exports = {
