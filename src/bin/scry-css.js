@@ -12,7 +12,7 @@ program
   )
   .parse(process.argv)
 
-if (!program.args.length) {
+if (!program.args.length || program.args.length < 3) {
   program.help()
 } else {
   PipelineRunner.run(program.reporter || 'console', ...program.args).then((summary) => {
