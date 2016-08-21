@@ -3,6 +3,8 @@
 ## Scry-CSS
 Suggestion engine for discovering LESS/SASS variables and mixins.
 
+![http://g.recordit.co/Qi5Qv1nR4O.gif](http://g.recordit.co/Qi5Qv1nR4O.gif)
+
 #### Need
 As a developer, I want to find all available LESS/SASS variables/mixins from my project/dependencies while I'm working, without going through all of the project files, so that I can increase my productivity.
 
