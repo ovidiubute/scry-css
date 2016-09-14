@@ -16,13 +16,6 @@ module.exports = (results) => {
   }
 
   return results.suggestionData.reduce((output, resultsByFile) => {
-    if (!resultsByFile.propertyDefinitions.length) {
-      output.push(`--> ${resultsByFile.filePath.underline}`)
-      output.push(reporterUtils.formatNoSuggestions())
-
-      return output
-    }
-
     const formatted = resultsByFile.propertyDefinitions.map((propDef) => {
       // Count suggestions in case we can print a single line
       const suggestionCount = reporterUtils.countCssPropertySuggestions(propDef)
