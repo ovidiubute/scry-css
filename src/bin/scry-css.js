@@ -2,6 +2,7 @@
 
 const program = require('commander')
 const PipelineRunner = require('../pipeline/runner')
+const _ = require('lodash')
 
 program
   .version('scry-css 0.2.1')
@@ -15,7 +16,12 @@ program
 if (!program.args.length || program.args.length < 3) {
   program.help()
 } else {
-  PipelineRunner.run(program.reporter || 'console', ...program.args).then((summary) => {
+  PipelineRunner.run(
+    !_.isEmpty(program.reporter) ? program.reporter.trim().toLowerCase() : 'console',
+    ...program.args.map(arg => (
+      !_.isEmpty(arg) ? arg.trim().toLowerCase() : arg
+    ))
+  ).then((summary) => {
     console.log(summary) // eslint-disable-line no-console
   })
 }
