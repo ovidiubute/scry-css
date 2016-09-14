@@ -1,6 +1,6 @@
 {
   "name": "scry-css",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Suggestion engine for CSS variables and mixins",
   "repository": {
     "type": "git",
