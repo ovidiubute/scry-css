@@ -5,7 +5,7 @@ const PipelineRunner = require('../pipeline/runner')
 const _ = require('lodash')
 
 program
-  .version('scry-css 0.2.2')
+  .version('scry-css 0.3.0')
   .usage('[options] <type> <dir> <file...>')
   .option(
     '-r --reporter [reporter]',

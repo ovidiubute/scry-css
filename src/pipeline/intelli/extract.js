@@ -1,6 +1,6 @@
 const _ = require('lodash')
 const Promise = require('promised-io/promise')
-const { parse } = require('../../parsers/less-variable')
+const Parsers = require('../../parsers')
 const { lines } = require('../../io').LineReader
 
 module.exports = (filesByDirectory, intelliConfig) => {
@@ -13,11 +13,12 @@ module.exports = (filesByDirectory, intelliConfig) => {
       return linesByFilePath
     }, {}))
   }, {})
+
   Promise.allKeys(promises).then((linesByFile) => {
     deferred.resolve(_.reduce(linesByFile, (result, fileLines, filePath) => {
       result[filePath] = _
         .chain(fileLines)
-        .map((fileLine) => parse(fileLine))
+        .map((fileLine) => Parsers[intelliConfig.stack].parse(fileLine))
         .filter((fileLine) => !_.isEmpty(fileLine))
         .value()
 
