@@ -1,4 +1,4 @@
-const LessVariableParser = require('../../src/parsers/less-variable')
+const { less: LessVariableParser } = require('../../src/parsers')
 
 describe('LESS Variable parser', function () {
   describe('#parse', function () {
