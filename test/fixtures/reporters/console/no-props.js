@@ -10,5 +10,5 @@ module.exports = {
       }
     ]
   },
-  output: 'Sorry, no suggestions available.'.italic.grey
+  output: 'Sorry, no suggestions available.'.italic.white
 }
