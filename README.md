@@ -8,7 +8,13 @@ Command line tool useful for discovering LESS/SASS variables and mixins in large
 ![demo.gif](demo.gif)
 
 ### Need
-As a developer, I want to find all available LESS/SASS variables/mixins from my project/dependencies while I'm working, without going through all of the project files, so that I can increase my productivity.
+
+````gherkin
+As a developer
+I want to find all available LESS/SASS variables/mixins from my project/dependencies 
+while I'm working, without going through all of the project files
+So that I can increase my productivity.
+```
 
 ### What's this all about?
 This tool is useful in large projects that make heavy use of LESS or SASS variables and mixins. Onboarding new members in such projects is often difficult because of lack of documentation, and this can lead to developers rewriting their own LESS/SASS variables due to insufficient knowledge of the project. This is both counterproductive and dangerous because your project may have a style guide that you wish to enforce. 
