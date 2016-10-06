@@ -11,28 +11,46 @@ Command line tool useful for discovering LESS/SASS variables and mixins in large
 
 ````gherkin
 As a developer
-I want to find all available LESS/SASS variables/mixins from my project/dependencies 
+I want to find all available LESS/SASS variables/mixins from my project/dependencies
 while I'm working, without going through all of the project files
 So that I can increase my productivity.
 ```
 
 ### What's this all about?
-This tool is useful in large projects that make heavy use of LESS or SASS variables and mixins. Onboarding new members in such projects is often difficult because of lack of documentation, and this can lead to developers rewriting their own LESS/SASS variables due to insufficient knowledge of the project. This is both counterproductive and dangerous because your project may have a style guide that you wish to enforce. 
+This tool is useful in large projects that make heavy use of LESS or SASS variables and mixins. Onboarding new members in such projects is often difficult because of lack of documentation, and this can lead to developers rewriting their own LESS/SASS variables due to insufficient knowledge of the project. This is both counterproductive and dangerous because your project may have a style guide that you wish to enforce.
 
-Imagine a scenario where your devs just write the code that they want, and during a code review, you run `scry-css` to find out if they followed your project's style guide or not (ideally they'd run the tool during development, though). This leads to a more interactive learning experience compared to the old way of forcing them to read the documentation or all of your "base" CSS files beforehand. 
+Imagine a scenario where your devs just write the code that they want, and during a code review, you run `scry-css` to find out if they followed your project's style guide or not (ideally they'd run the tool during development, though). This leads to a more interactive learning experience compared to the old way of forcing them to read the documentation or all of your "base" CSS files beforehand.
 
 ### How to use scry-css
 ```npm install -g scry-css```
 ```scry-css [options] <type> <directory> <files...>```
 
-Command line options: 
+Command line options:
 - ```-r```: How to report results, options are `json` or `console`, the default is `console` and will output to stdout
-- ```type```: The CSS dialect used, options are `less` and `sass` 
+- ```type```: The CSS dialect used, options are `less` and `sass`
 - ```directory```: Absolute path to the directory where less/sass variables/mixins are located
 - ```files```: List of absolute paths to your working files, separated by spaces
 
 ### Contribute
 Pull requests are very appreciated :-)
+
+I'm using Travis CI to build, and coveralls for code coverage (istanbul does the actual instrumentation). PRs will only be accepted if they do not reduce the coverage under 95%, regardless of how important the code is to the project.
+
+To run the tests:
+
+```
+npm test
+```
+
+If you'd like to keep the tests running while you're working you can run:
+
+```
+npm run test:watch
+```
+
+This will provide you a notification whenever you change your code to let you know if the tests still pass.
+
+ESLint is integrated into the project, I'm using [airbnb](https://www.npmjs.com/package/eslint-config-airbnb) with a few twists, check out `.eslintrc.js` for the details, and just run `npm run lint` to see the results.
 
 ### FAQ
 Q: I don't get it. I use Sublime/WebStorm/Atom and I just type `@` and I get variables suggested. Why would I use your tool?
