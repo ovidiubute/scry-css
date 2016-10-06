@@ -69,8 +69,8 @@ module.exports = {
     `    --> ${path.resolve('test/fixtures/pipeline/intelli/extract/has-variables.less')}`.bold,
     '        ' + '@global-background'.red + ': '.bold + '#fff'.yellow + '; '.bold + '(line 12)'.bold,
     '    ' + 'color'.blue + ': '.bold + '#fff'.white + '; '.bold + '(line 4)'.grey,
-    '    ' + 'Sorry, no suggestions available.'.italic.grey,
+    '    ' + 'Sorry, no suggestions available.'.italic.white,
     '    ' + 'color'.blue + ': '.bold + '#ddd'.white + '; '.bold + '(line 8)'.grey,
-    '    ' + 'Sorry, no suggestions available.'.italic.grey,
+    '    ' + 'Sorry, no suggestions available.'.italic.white,
   ].join(os.EOL)
 }
