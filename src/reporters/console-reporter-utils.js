@@ -9,7 +9,7 @@ const colour = require('colour') // eslint-disable-line no-unused-vars
 
 /** Returns a formatted info message that no suggestions could be found. */
 function formatNoSuggestions() {
-  return 'Sorry, no suggestions available.'.italic.grey
+  return 'Sorry, no suggestions available.'.italic.white
 }
 
 /**
