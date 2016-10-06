@@ -3,9 +3,10 @@
 const program = require('commander')
 const PipelineRunner = require('../pipeline/runner')
 const _ = require('lodash')
+const pkg = require('../../package.json')
 
 program
-  .version('scry-css 0.3.0')
+  .version(`${pkg.name} ${pkg.version}`)
   .usage('[options] <type> <dir> <file...>')
   .option(
     '-r --reporter [reporter]',
