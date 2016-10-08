@@ -3,7 +3,7 @@
 [![NPM](https://nodei.co/npm/scry-css.png)](https://nodei.co/npm/scry-css/)
 
 ## Scry-CSS
-Command line tool useful for discovering LESS/SASS variables and mixins in large scale projects.
+Easily discover LESS/SASS variables and mixins in large scale projects.
 
 ![demo.gif](demo.gif)
 
@@ -11,15 +11,14 @@ Command line tool useful for discovering LESS/SASS variables and mixins in large
 
 ````gherkin
 As a developer
-I want to find all available LESS/SASS variables/mixins from my project/dependencies
-while I'm working, without going through all of the project files
-So that I can increase my productivity.
+I want to find all available LESS/SASS variables & mixins in my project and dependencies without manually going through all of the project files
+So that I can increase productivity and code quality
 ```
 
 ### What's this all about?
 This tool is useful in large projects that make heavy use of LESS or SASS variables and mixins. Onboarding new members in such projects is often difficult because of lack of documentation, and this can lead to developers rewriting their own LESS/SASS variables due to insufficient knowledge of the project. This is both counterproductive and dangerous because your project may have a style guide that you wish to enforce.
 
-Imagine a scenario where your devs just write the code that they want, and during a code review, you run `scry-css` to find out if they followed your project's style guide or not (ideally they'd run the tool during development, though). This leads to a more interactive learning experience compared to the old way of forcing them to read the documentation or all of your "base" CSS files beforehand.
+Imagine a scenario where your developers just write the code that they want, and during a code review, you run `scry-css` to find out if they followed your project's style guide or not (ideally they'd run the tool themselves). This leads to a more interactive learning experience compared to the old way of forcing them to read the documentation or all of your "base" CSS files beforehand.
 
 ### How to use scry-css
 ```npm install -g scry-css```
@@ -34,7 +33,9 @@ Command line options:
 ### Contribute
 Pull requests are very appreciated :-)
 
-I'm using Travis CI to build, and coveralls for code coverage (istanbul does the actual instrumentation). PRs will only be accepted if they do not reduce the coverage under 95%, regardless of how important the code is to the project.
+I'm using [Travis CI](https://travis-ci.org/) to build, and [Coveralls](https://coveralls.io/) for code coverage ([Istanbul](https://github.com/gotwarlost/istanbul) does the actual instrumentation).
+
+PRs will only be accepted if they do not reduce the test coverage under 95%, regardless of how important the code is to the project.
 
 To run the tests:
 
@@ -48,9 +49,12 @@ If you'd like to keep the tests running while you're working you can run:
 npm run test:watch
 ```
 
-This will provide you a notification whenever you change your code to let you know if the tests still pass.
+This will also provide you a system notification whenever you change your code to let you know if the tests still pass.
 
-ESLint is integrated into the project, I'm using [airbnb](https://www.npmjs.com/package/eslint-config-airbnb) with a few twists, check out `.eslintrc.js` for the details, and just run `npm run lint` to see the results.
+ESLint is integrated into the project as a pre-commit hook (along with the unit-tests), you can't commit unless all the unit-tests pass and there are no linting errors (unless you manually force the commit, which I don't recommend).
+As linting rules I'm using [airbnb](https://www.npmjs.com/package/eslint-config-airbnb) with a few twists, check out `.eslintrc.js` for the details, and just run `npm run lint` to see the results at any time.
+
+One last note; this tool requires at least Node 6.0, there are no plans to support older versions.
 
 ### FAQ
 Q: I don't get it. I use Sublime/WebStorm/Atom and I just type `@` and I get variables suggested. Why would I use your tool?
