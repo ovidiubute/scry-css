@@ -3,7 +3,7 @@
 [![NPM](https://nodei.co/npm/scry-css.png)](https://nodei.co/npm/scry-css/)
 
 ## Scry-CSS
-Command line tool used to discover LESS/SASS variables and mixins in large scale projects.
+Easily discover LESS/SASS variables and mixins in large scale projects.
 
 ![demo.gif](demo.gif)
 
