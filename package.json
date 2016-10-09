@@ -35,12 +35,12 @@
     "mixins"
   ],
   "dependencies": {
+    "bluebird": "^3.4.6",
     "colour": "0.7.1",
     "commander": "2.9.0",
     "fuzzaldrin": "2.1.0",
     "lodash": "4.14.1",
-    "node-dir": "0.1.15",
-    "promised-io": "0.3.5"
+    "node-dir": "0.1.15"
   },
   "devDependencies": {
     "chai": "3.5.0",

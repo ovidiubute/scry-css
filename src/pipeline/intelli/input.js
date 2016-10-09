@@ -1,16 +1,15 @@
 const { files } = require('../../io/dir-walker')
-const Promise = require('promised-io/promise')
+const Promise = require('bluebird')
 
-module.exports = (dirPaths, intelliConfig) => {
-  const deferred = new Promise.Deferred()
+module.exports = (dirPaths, intelliConfig) =>
+  new Promise((resolve) => {
+    const filesByDirectory = {}
+    Promise.all(dirPaths.map((dirPath) => files(dirPath, intelliConfig.fileExtension)))
+      .then((results) => {
+        results.forEach((fileList, index) => {
+          filesByDirectory[dirPaths[index]] = fileList
+        })
 
-  let filesByDirectory = {}
-  Promise.all(dirPaths.map((dirPath) => files(dirPath, intelliConfig.fileExtension))).then((results) => {
-    results.map((fileList, index) => {
-      filesByDirectory[dirPaths[index]] = fileList
-    })
-    deferred.resolve(filesByDirectory)
+        resolve(filesByDirectory)
+      })
   })
-
-  return deferred.promise
-}
