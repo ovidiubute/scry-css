@@ -1,30 +1,37 @@
 const _ = require('lodash')
-const Promise = require('promised-io/promise')
+const Promise = require('bluebird')
 const Parsers = require('../../parsers')
 const { lines } = require('../../io').LineReader
 
-module.exports = (filesByDirectory, intelliConfig) => {
-  const deferred = new Promise.Deferred()
+module.exports = (filesByDirectory, intelliConfig) =>
+  new Promise((resolve) => {
+    const promises = _.reduce(filesByDirectory, (result, filePaths) =>
+      _.assign(result, _.reduce(filePaths, (linesByFilePath, filePath) => {
+        const updateLinesByFilePath = linesByFilePath
+        updateLinesByFilePath[filePath] = lines(filePath)
 
-  const promises = _.reduce(filesByDirectory, (result, filePaths) => {
-    return _.assign(result, _.reduce(filePaths, (linesByFilePath, filePath) => {
-      linesByFilePath[filePath] = lines(filePath)
+        return updateLinesByFilePath
+      }, {}))
+    , {})
 
-      return linesByFilePath
-    }, {}))
-  }, {})
+    const promiseKeys = Object.keys(promises)
+    const promPromises = promiseKeys.map(key => promises[key])
 
-  Promise.allKeys(promises).then((linesByFile) => {
-    deferred.resolve(_.reduce(linesByFile, (result, fileLines, filePath) => {
-      result[filePath] = _
-        .chain(fileLines)
-        .map((fileLine) => Parsers[intelliConfig.stack].parse(fileLine))
-        .filter((fileLine) => !_.isEmpty(fileLine))
-        .value()
+    Promise.all(promPromises).then((linesByIndex) => {
+      const linesObject = {}
+      promiseKeys.forEach((key, index) => {
+        linesObject[key] = linesByIndex[index]
+      })
 
-      return result
-    }, {}))
+      resolve(_.reduce(linesObject, (result, fileLines, filePath) => {
+        const updatedResult = result
+        updatedResult[filePath] = _
+          .chain(fileLines)
+          .map((fileLine) => Parsers[intelliConfig.stack].parse(fileLine))
+          .filter((fileLine) => !_.isEmpty(fileLine))
+          .value()
+
+        return updatedResult
+      }, {}))
+    })
   })
-
-  return deferred.promise
-}
