@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>scry-css by ovidiubute</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">scry-css</h1>
+      <h2 class="project-tagline">Easily discover LESS/SASS variables and mixins in large scale projects.</h2>
+      <a href="https://github.com/ovidiubute/scry-css" class="btn">View on GitHub</a>
+      <a href="https://github.com/ovidiubute/scry-css/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/ovidiubute/scry-css/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <p><a href="https://travis-ci.org/ovidiubute/scry-css"><img src="https://travis-ci.org/ovidiubute/scry-css.svg?branch=master" alt="Build Status"></a> <a href="https://coveralls.io/github/ovidiubute/scry-css?branch=master"><img src="https://coveralls.io/repos/github/ovidiubute/scry-css/badge.svg?branch=master" alt="Coverage Status"></a></p>
+
+<p><a href="https://nodei.co/npm/scry-css/"><img src="https://nodei.co/npm/scry-css.png" alt="NPM"></a></p>
+
+<h2>
+<a id="scry-css" class="anchor" href="#scry-css" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Scry-CSS</h2>
+
+<p>Easily discover LESS/SASS variables and mixins in large scale projects.</p>
+
+<p><img src="demo.gif" alt="demo.gif"></p>
+
+<h3>
+<a id="need" class="anchor" href="#need" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Need</h3>
+
+<div class="highlight highlight-text-gherkin-feature"><pre>As a developer
+<span class="pl-k">I </span>want to find all available LESS/SASS variables &amp; mixins in my project and dependencies without manually going through all of the project files
+So that I can increase productivity and code quality</pre></div>
+
+<h3>
+<a id="whats-this-all-about" class="anchor" href="#whats-this-all-about" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>What's this all about?</h3>
+
+<p>This tool is useful in large projects that make heavy use of LESS or SASS variables and mixins. Onboarding new members in such projects is often difficult because of lack of documentation, and this can lead to developers rewriting their own LESS/SASS variables due to insufficient knowledge of the project. This is both counterproductive and dangerous because your project may have a style guide that you wish to enforce.</p>
+
+<p>Imagine a scenario where your developers just write the code that they want, and during a code review, you run <code>scry-css</code> to find out if they followed your project's style guide or not (ideally they'd run the tool themselves). This leads to a more interactive learning experience compared to the old way of forcing them to read the documentation or all of your "base" CSS files beforehand.</p>
+
+<h3>
+<a id="how-to-use-scry-css" class="anchor" href="#how-to-use-scry-css" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>How to use scry-css</h3>
+
+<p><code>npm install -g scry-css</code>
+<code>scry-css [options] &lt;type&gt; &lt;directory&gt; &lt;files...&gt;</code></p>
+
+<p>Command line options:</p>
+
+<ul>
+<li>
+<code>-r</code>: How to report results, options are <code>json</code> or <code>console</code>, the default is <code>console</code> and will output to stdout</li>
+<li>
+<code>type</code>: The CSS dialect used, options are <code>less</code> and <code>sass</code>
+</li>
+<li>
+<code>directory</code>: Absolute path to the directory where less/sass variables/mixins are located</li>
+<li>
+<code>files</code>: List of absolute paths to your working files, separated by spaces</li>
+</ul>
+
+<h3>
+<a id="contribute" class="anchor" href="#contribute" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Contribute</h3>
+
+<p>Pull requests are very appreciated :-)</p>
+
+<p>I'm using <a href="https://travis-ci.org/">Travis CI</a> to build, and <a href="https://coveralls.io/">Coveralls</a> for code coverage (<a href="https://github.com/gotwarlost/istanbul">Istanbul</a> does the actual instrumentation).</p>
+
+<p>PRs will only be accepted if they do not reduce the test coverage under 95%, regardless of how important the code is to the project.</p>
+
+<p>To run the tests:</p>
+
+<pre><code>npm test
+</code></pre>
+
+<p>If you'd like to keep the tests running while you're working you can run:</p>
+
+<pre><code>npm run test:watch
+</code></pre>
+
+<p>This will also provide you a system notification whenever you change your code to let you know if the tests still pass.</p>
+
+<p>ESLint is integrated into the project as a pre-commit hook (along with the unit-tests), you can't commit unless all the unit-tests pass and there are no linting errors (unless you manually force the commit, which I don't recommend).
+As linting rules I'm using <a href="https://www.npmjs.com/package/eslint-config-airbnb">airbnb</a> with a few twists, check out <code>.eslintrc.js</code> for the details, and just run <code>npm run lint</code> to see the results at any time.</p>
+
+<p>One last note; this tool requires at least Node 6.0, there are no plans to support older versions.</p>
+
+<h3>
+<a id="faq" class="anchor" href="#faq" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>FAQ</h3>
+
+<p>Q: I don't get it. I use Sublime/WebStorm/Atom and I just type <code>@</code> and I get variables suggested. Why would I use your tool?</p>
+
+<p>A: If you're happy with your IDE in control, then that's fine. I used to rely on my IDE for everything, too. But how does an IDE help you review somebody else's code? Do you checkout his branch locally and verify it? Are you absolutely sure your IDE suggests variables that are inside <code>node_modules</code>? This tool is IDE agnostic and can be run in a CI environment using the <code>json</code> reporter option. It is a much more flexible solution that can be expanded further (see the Github Issues tab for my vision).</p>
+
+<p>Q: How are variables suggested?</p>
+
+<p>A: I use the fuzzy search algorithm supplied by <strong><em>fuzzaldrin</em></strong></p>
+
+<p>Q: I think the name of a variable is not enough for it to be suggested. Any plans on including the value of the variable too?</p>
+
+<p>A: Yes, there are plans. Watch the <a href="https://github.com/ovidiubute/scry-css/issues">Issues</a> in GitHub for more info.</p>
+
+<h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>License</h2>
+
+<p>This project uses the <a href="https://github.com/ovidiubute/scry-css/blob/master/LICENSE">MIT</a> license.</p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/ovidiubute/scry-css">scry-css</a> is maintained by <a href="https://github.com/ovidiubute">ovidiubute</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
