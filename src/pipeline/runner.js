@@ -1,5 +1,5 @@
 const _ = require('lodash')
-const Promise = require('promised-io/promise')
+const Promise = require('bluebird')
 
 const { intelInput, intelExtract } = require('./intelli')
 const findCandidates = require('./find-candidates')

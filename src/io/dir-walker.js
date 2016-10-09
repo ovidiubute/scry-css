@@ -1,5 +1,5 @@
 const dir = require('node-dir')
-const Promise = require('promised-io/promise')
+const Promise = require('bluebird')
 const path = require('path')
 const _ = require('lodash')
 
@@ -8,20 +8,18 @@ function files(dirPath, fileExtension) {
     throw new Error('fileExtension is mandatory!')
   }
 
-  const deferred = new Promise.Deferred()
+  return new Promise((resolve, reject) => {
+    dir.files(path.resolve(dirPath), (err, fileList) => {
+      if (err) {
+        reject(err)
+        return
+      }
 
-  dir.files(path.resolve(dirPath), (err, fileList) => {
-    if (err) {
-      deferred.reject(err)
-      return
-    }
-
-    deferred.resolve(
-      fileList.filter(file => !_.startsWith(file, '.') && _.endsWith(file, fileExtension))
-    )
+      resolve(
+        fileList.filter(file => !_.startsWith(file, '.') && _.endsWith(file, fileExtension))
+      )
+    })
   })
-
-  return deferred.promise
 }
 
 module.exports = {
