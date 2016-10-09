@@ -1,6 +1,6 @@
-const { isBlacklisted } = require('../../src/parsers/blacklist')
+const { isBlacklisted } = require('../../src/candidates/blacklist')
 
-describe('parsers/blacklist', () => {
+describe('candidates/blacklist', () => {
   describe('#isBlacklisted', () => {
     it('should filter out blacklisted properties', () => {
       expect(isBlacklisted({

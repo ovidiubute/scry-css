@@ -63,6 +63,18 @@ module.exports = {
         isEmpty: true,
         lineNumber: 14
       },
+      {
+        string: 'p.some-class {',
+        lineNumber: 15
+      },
+      {
+        string: 'display: table;',
+        lineNumber: 16
+      },
+      {
+        string: '}',
+        lineNumber: 17
+      },
     ]
   },
   output: [
