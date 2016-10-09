@@ -7,4 +7,14 @@ module.exports = {
     fileExtension: 'sass',
     stack: 'sass',
   },
+  blacklist: [
+    'position',
+    'display',
+    'float',
+    'right',
+    'top',
+    'left',
+    'z-index',
+    'cursor',
+  ],
 }
