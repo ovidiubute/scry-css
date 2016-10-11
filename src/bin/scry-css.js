@@ -7,14 +7,14 @@ const pkg = require('../../package.json')
 
 program
   .version(`${pkg.name} ${pkg.version}`)
-  .usage('[options] <type> <dir> <file...>')
+  .usage('[options] <dir> <file...>')
   .option(
     '-r --reporter [reporter]',
     'reporter (json/console), defaults to console', /^(console|json)$/i
   )
   .parse(process.argv)
 
-if (!program.args.length || program.args.length < 3) {
+if (!program.args.length || program.args.length < 2) {
   program.help()
 } else {
   PipelineRunner.run(
