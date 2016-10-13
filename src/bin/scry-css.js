@@ -1,28 +1,19 @@
 #! /usr/bin/env node
 
-const program = require('commander')
-const PipelineRunner = require('../pipeline/runner')
-const _ = require('lodash')
 const pkg = require('../../package.json')
-
-program
-  .version(`${pkg.name} ${pkg.version}`)
-  .usage('[options] <type> <dir> <file...>')
-  .option(
-    '-r --reporter [reporter]',
-    'reporter (json/console), defaults to console', /^(console|json)$/i
-  )
-  .parse(process.argv)
-
-if (!program.args.length || program.args.length < 3) {
-  program.help()
-} else {
-  PipelineRunner.run(
-    !_.isEmpty(program.reporter) ? program.reporter.trim().toLowerCase() : 'console',
-    ...program.args.map(arg => (
-      !_.isEmpty(arg) ? arg.trim().toLowerCase() : arg
-    ))
-  ).then((summary) => {
-    console.log(summary) // eslint-disable-line no-console
+const PipelineRunner = require('../pipeline/runner')
+const argv = require('yargs')
+  .usage('Usage: $0 [options] <type> <dir> <file...>')
+  .demand(3)
+  .option('reporter', {
+    alias: 'r',
+    describe: 'output reporter',
+    choices: ['console', 'json'],
+    default: 'console',
   })
-}
+  .version(() => `${pkg.name} ${pkg.version}`)
+  .help()
+  .argv
+
+PipelineRunner.run(argv.reporter, ...argv._)
+  .then((summary) => process.stdout.write(`${summary}\n`))
