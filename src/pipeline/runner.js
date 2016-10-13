@@ -14,20 +14,31 @@ function run(reporterType, techType, dirPath, ...filePaths) {
     throw new Error(`Unsupported techType: ${techType}`)
   }
 
-  return Promise.allKeys({
-    intelliByFile: Promise.seq([
-      intelInput.bind(null, [dirPath], runnerConfig),
-      (filesByDirectory) => intelExtract(filesByDirectory, runnerConfig),
-    ]),
-    candidatesByFile: Promise.seq([
-      extractLines.bind(null, filePaths),
-      ({ files: linesByFile }) => findCandidates(linesByFile),
-    ]),
-  }).then((data) => summary(
-    reporterType,
-    findSuggestions(_.extend(data, {
-      config: runnerConfig,
-    }))
+  return Promise.all([
+    intelInput([dirPath], runnerConfig).then((filesByDirectory) => (
+      intelExtract(filesByDirectory, runnerConfig)
+    )),
+    extractLines(filePaths).then(({ files: linesByFile }) => (
+      findCandidates(linesByFile)
+    )),
+  ]).then((promiseResults) => {
+    const [intelliByFile, candidatesByFile] = promiseResults
+
+    return {
+      intelliByFile,
+      candidatesByFile,
+    }
+  }).then((data) => (
+    summary(
+      reporterType,
+      findSuggestions(
+        _.extend(
+          data, {
+            config: runnerConfig,
+          }
+        )
+      )
+    )
   ))
 }
 
