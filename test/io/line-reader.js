@@ -2,7 +2,7 @@ const LineReader = require('../../src/io/line-reader')
 const fixture = require('../fixtures/only-variables')
 const _ = require('lodash')
 
-describe('io/line-reader', () => {
+describe('/io/line-reader', () => {
   describe('#lines', () => {
     it('should parse a file and return an array of lines', (done) => {
       LineReader.lines('test/fixtures/only-variables.less').then((lines) => {
