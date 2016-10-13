@@ -1,6 +1,6 @@
 const jsonReporter = require('../../src/reporters/json-reporter')
 
-describe('reporters/json-reporter', () => {
+describe('/reporters/json-reporter', () => {
   it('should output formatted JSON', () => {
     expect(jsonReporter({
       a: 2,
