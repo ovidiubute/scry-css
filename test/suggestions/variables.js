@@ -1,6 +1,6 @@
 const { match } = require('../../src/suggestions/variables')
 
-describe('src/suggestions/variables', () => {
+describe('/suggestions/variables', () => {
   it('should match properties with candidates and order desc by score', () => {
     expect(match('width', [
       'global-width',
