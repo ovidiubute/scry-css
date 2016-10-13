@@ -1,6 +1,6 @@
 const receiveInput = require('../../../src/pipeline/intelli/input')
 
-describe('pipeline/intelli/input', () => {
+describe('/pipeline/intelli/input', () => {
   it('should receive a list of directories and return all files matching extension', (done) => {
     const dirs = [
       'test/fixtures/walk-directory',
