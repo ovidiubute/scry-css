@@ -6,7 +6,7 @@ const lessFixture = require('../../fixtures/pipeline/intelli/extract/base')
 const sassFixture = require('../../fixtures/pipeline/intelli/extract/sass-base')
 const intelliConfig = require('../../../src/config')
 
-describe('#extract', () => {
+describe('pipeline/intelli/extract', () => {
   it('should extract LESS variables from given directories', (done) => {
     extract(lessFixture.input, intelliConfig.less).then((result) => {
       expect(result).to.deep.equal(lessFixture.output)
