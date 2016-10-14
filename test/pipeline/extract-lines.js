@@ -1,6 +1,6 @@
 const extractLines = require('../../src/pipeline/extract-lines')
 
-describe('#extractLines', () => {
+describe('/pipeline/extract-lines', () => {
   it('should return all lines from a set of file paths', (done) => {
     let fileNames = [
       'test/fixtures/only-variables.less',

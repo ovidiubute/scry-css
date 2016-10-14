@@ -4,7 +4,7 @@
 const SassParser = require('../../src/parsers/sass-variable')
 
 describe('SASS Variable parser', () => {
-  describe('#parse', () => {
+  describe('/parsers/sass-variable', () => {
     it('should parse variable with a hex color value', () => {
       expect(SassParser.parse({
         string: '$link-color:        #428bca;',

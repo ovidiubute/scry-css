@@ -1,6 +1,6 @@
 const CssPropertyParser = require('../../src/parsers/css-property')
 
-describe('CSS Property parser', function () {
+describe('/parsers/css-property', function () {
   describe('#parse', function () {
     it('should parse a CSS property', function () {
       expect(CssPropertyParser.parse({
