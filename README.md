@@ -9,7 +9,7 @@ Easily discover LESS/SASS variables and mixins in large scale projects.
 
 ### Need
 
-````gherkin
+```gherkin
 As a developer
 I want to find all available LESS/SASS variables & mixins in my project and dependencies without manually going through all of the project files
 So that I can increase productivity and code quality
