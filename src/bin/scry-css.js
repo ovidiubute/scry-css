@@ -3,8 +3,8 @@
 const pkg = require('../../package.json')
 const PipelineRunner = require('../pipeline/runner')
 const argv = require('yargs')
-  .usage('Usage: $0 [options] <type> <dir> <file...>')
-  .demand(3)
+  .usage('Usage: $0 [options] <dir> <file...>')
+  .demand(2)
   .option('reporter', {
     alias: 'r',
     describe: 'output reporter',
