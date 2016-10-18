@@ -1,7 +1,7 @@
 const consoleReporter = require('../../../src/reporters/console-reporter')
 const fixture = require('../../fixtures/reporters/console/base')
 
-describe('Console Reporter', () => {
+describe('/reporters/console', () => {
   it('should return formatted description of results', () => {
     const actual = consoleReporter(fixture.input)
     expect(actual).to.deep.equal(fixture.output)
