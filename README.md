@@ -22,11 +22,10 @@ Imagine a scenario where your developers just write the code that they want, and
 
 ### How to use scry-css
 ```npm install -g scry-css```
-```scry-css [options] <type> <directory> <files...>```
+```scry-css [options] <directory> <files...>```
 
 Command line options:
 - ```-r```: How to report results, options are `json` or `console`, the default is `console` and will output to stdout
-- ```type```: The CSS dialect used, options are `less` and `sass`
 - ```directory```: Absolute path to the directory where less/sass variables/mixins are located
 - ```files```: List of absolute paths to your working files, separated by spaces
 
