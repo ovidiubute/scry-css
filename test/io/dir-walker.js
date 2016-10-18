@@ -1,7 +1,7 @@
 const DirWalker = require('../../src/io/dir-walker')
 const fixture = require('../fixtures/walk-directory/base')
 
-describe('DirWalker', () => {
+describe('/io/dir-walker', () => {
   describe('#parse', () => {
     it('should return all LESS file names from a directory', (done) => {
       DirWalker.files('test/fixtures/walk-directory', '.less').then((files) => {
