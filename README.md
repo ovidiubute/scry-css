@@ -5,7 +5,7 @@
 ## Scry-CSS
 Easily discover LESS/SASS variables and mixins in large scale projects.
 
-![demo.gif](demo.gif)
+![https://s3.eu-central-1.amazonaws.com/ovi-projects/scry-css/demo.gif](demo.gif)
 
 ### Need
 
